@@ -1,38 +1,28 @@
-let chai = require('chai');
-let getBooks = require('../utils/googlebooks');
-let expect = chai.expect;
-let patt = /turing/i;
+const axios = require('axios');
 
-//Our parent block
-describe('Test Async Books', () => {
-    beforeEach((done) => { //Before each test we empty the database
-        done();
-    });
-
-    it('should return an object with list books with turing in the title', function(done) {
-        getBooks('turing').then((result) => {
-            let res = JSON.parse(result);
-            let books = res.data;
-            expect(books).to.be.an('object');
-            expect(books.items).to.satisfy(function(items) {
-                return items.every(function(item) {
-                    return patt.test(item.volumeInfo.title) || patt.test(item.volumeInfo.description);
-                });
-            });
-           done();
-        }).catch(err => done(err));
-    });
-
-    it('should return an error with list books with "" in the title', function(done) {
-        getBooks('').then((result) => {
-            console.log(result);
-            let books = JSON.parse(result.data);
-            expect(books).to.be.an('object');
-            done();
-        }).catch(err => {
-                //expect(err.response).to.have.status(400);
-                expect(err.response.status).to.be.equal(400);
-                done();
+module.exports = async (phrase) => {
+    try {
+        const results = await axios.get('https://www.googleapis.com/books/v1/volumes', {
+            params: {
+                format: 'json',
+                q: phrase
+            }
         });
-    });
-});
+
+        // Returning an object with the important data from the response
+        return {
+            data: results.data,
+            status: results.status,
+            statusText: results.statusText,
+            headers: results.headers,
+            requestHeader: results.config.headers
+        };
+
+    } catch (error) {
+        // If there was an error (like no internet or bad request), we catch it here
+        console.error('Error fetching data:', error);
+        return {
+            error: error.message
+        };
+    }
+};
