@@ -1,0 +1,20 @@
+//Both requests and response were generated from book_search and book_id, both headers were the same. 
+Request:
+Postman-Token: <Generated when the request is sent>
+Host: <Generated when the request is sent>
+User-Agent: PostmanRuntime/7.43.0
+Accept: /
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+Response:
+Content-Type: application/json; charset=UTF-8
+Vary: Origin, X-Origin, Referer
+Content-Encoding: gzip
+Date: Mon, 03 Feb 2025 03:12:08 GMT
+Server: ESF
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+Transfer-Encoding: chunked
