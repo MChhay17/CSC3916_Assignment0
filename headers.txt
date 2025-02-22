@@ -18,3 +18,30 @@ X-Frame-Options: SAMEORIGIN
 X-Content-Type-Options: nosniff
 Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 Transfer-Encoding: chunked
+
+--------------------------------------------------------------
+### Description:
+
+This file includes request and response headers from a book search API request. These headers were created when making a request to the `book_search` and `book_id` endpoints. Below is a simple explanation of what each header does:
+
+#### Request Headers Explanation:
+- Postman-Token: A unique token that Postman generates each time a request is sent.
+- Host: The server that the request is being sent to (generated automatically).
+- User-Agent: Identifies the program making the request (in this case, PostmanRuntime/7.43.0).
+- Accept: Tells the server that the client can receive any type of response (`*/*`).
+- Accept-Encoding: Lists the compression methods the client supports (gzip, deflate, br).
+- Connection: Keeps the connection open for more requests if needed (`keep-alive`).
+
+#### Response Headers Explanation:
+- Content-Type: Shows that the response is in JSON format and uses UTF-8 encoding.
+- Vary: Indicates that the response might change based on `Origin`, `X-Origin`, and `Referer`.
+- Content-Encoding: Means the response is compressed with gzip.
+- Date: The exact time when the response was sent (`Mon, 03 Feb 2025 03:12:08 GMT`).
+- Server: The server that processed the request (ESF, which is likely Google's Edge Server Frontend).
+- X-XSS-Protection: This security setting is turned off (`0`), meaning the browser won’t block XSS attacks.
+- X-Frame-Options: Stops the response from being displayed in an iframe (`SAMEORIGIN`).
+- X-Content-Type-Options: Prevents the browser from guessing the file type (`nosniff`).
+- Alt-Svc: Shows that the server supports HTTP/3 and alternative services for 30 days (`ma=2592000`).
+- Transfer-Encoding: Means the response is sent in small chunks instead of all at once.
+
+This file is a useful reference for understanding how the API request and response work. It can help with debugging, learning how APIs communicate, and checking for security settings.
